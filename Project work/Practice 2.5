@@ -1,1 +1,57 @@
+#include <iostream>
+#include <string>
 
+class Student {
+private:
+    std::string name;
+    int age;
+    double average;
+
+public:
+    // Конструктор
+    Student(std::string n, int a, double av)
+        : name(n), age(a), average(av) {}
+
+    // Сеттеры
+    void setName(const std::string& n) { name = n; }
+    void setAge(int a) { age = a; }
+    void setAverage(double av) { average = av; }
+
+    // Геттеры
+    std::string getName() const { return name; }
+    int getAge() const { return age; }
+    double getAverage() const { return average; }
+
+    // Метод вывода информации
+    void printInfo() const {
+        std::cout << "Имя: " << name
+                  << ", Возраст: " << age
+                  << ", Средний балл: " << average << std::endl;
+    }
+
+    // Метод оценки
+    std::string getGrade() const {
+        if (average > 8) return "Отлично";
+        if (average >= 6) return "Хорошо";
+        if (average >= 4) return "Удовлетворительно";
+        return "Неудовлетворительно";
+    }
+
+    // Дополнительный метод
+    bool isAdult() const {
+        return age >= 18;
+    }
+};
+
+int main() {
+    Student s1("Иван", 19, 8.5);
+    Student s2("Мария", 17, 6.2);
+
+    s1.printInfo();
+    std::cout << "Оценка: " << s1.getGrade() << std::endl;
+
+    s2.printInfo();
+    std::cout << "Оценка: " << s2.getGrade() << std::endl;
+
+    return 0;
+}
